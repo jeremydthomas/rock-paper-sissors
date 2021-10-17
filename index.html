@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let playerSelection = 'sissors';
+      // let computerSelection = computerPlay();
+
+      function computerPlay() {
+        let gamePieces = ["rock", "paper", "sissors"];
+        let randomOutcome = Math.floor(Math.random() * 3);
+        return gamePieces[randomOutcome];
+      }
+
+      function playRound(playerSelection, computerSelection) {
+        computerSelection = computerPlay();
+
+        // return playerSelection.toLowerCase() === computerSelection
+        // 	? 'even'
+        // 	: playerSelection.toLowerCase() === 'rock' &&
+        // 	  computerSelection === 'sissors'
+        // 	? 'win'
+        // 	: playerSelection.toLowerCase() === 'paper' &&
+        // 	  computerSelection === 'rock'
+        // 	? 'win'
+        // 	: playerSelection.toLowerCase() === 'sissors' &&
+        // 	  computerSelection === 'paper'
+        // 	? 'win'
+        // 	: 'lose';
+        if (playerSelection.toLowerCase() === computerSelection) {
+          return "Its a Tie!";
+        } else if (
+          playerSelection.toLowerCase() === "rock" &&
+          computerSelection === "sissors"
+        ) {
+          return "You Win! Rock Beats Sissors!";
+        } else if (
+          playerSelection.toLowerCase() === "paper" &&
+          computerSelection === "rock"
+        ) {
+          return "You Win! Paper beats Rock!";
+        } else if (
+          playerSelection.toLowerCase() === "sissors" &&
+          computerSelection === "paper"
+        ) {
+          return "You Win! Sissor Beats Paper!";
+        } else {
+          return "You Lose!";
+        }
+      }
+
+      function game() {
+        win = 0;
+        loss = 0;
+        tie = 0;
+        for (let i = 0; i < 5; i++) {
+          let rounds = playRound(playerSelection, computerSelection);
+          // console.log(rounds.includes('Win'));
+          if (rounds.includes("Win") === true) {
+            win++;
+          } else if (rounds.includes("Lose")) {
+            loss++;
+          } else {
+            tie++;
+          }
+        }
+        return win > loss
+          ? "You Win"
+          : win === loss
+          ? "Is is a tie!"
+          : "You Lose";
+      }
+
+      const playerSelection = prompt();
+      const computerSelection = "";
+
+      console.log(playRound(playerSelection, computerSelection));
+    </script>
+  </body>
+</html>
