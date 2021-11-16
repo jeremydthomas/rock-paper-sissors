@@ -1,85 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      // let playerSelection = 'sissors';
-      // let computerSelection = computerPlay();
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button id="rock">Rock</button>
+		<button id="paper">Paper</button>
+		<button id="sissors">Sissors</button>
+		<div id="container">Results</div>
+		<div id="wins">Wins</div>
+		<div id="losses">Losses</div>
+		<div id="tiedGame">Tie</div>
 
-      function computerPlay() {
-        let gamePieces = ["rock", "paper", "sissors"];
-        let randomOutcome = Math.floor(Math.random() * 3);
-        return gamePieces[randomOutcome];
-      }
+		<script>
+			const rock = document.querySelector('#rock');
+			const paper = document.querySelector('#paper');
+			const sissors = document.querySelector('#sissors');
 
-      function playRound(playerSelection, computerSelection) {
-        computerSelection = computerPlay();
+			let win = 0;
+			let lose = 0;
+			let tie = 0;
 
-        // return playerSelection.toLowerCase() === computerSelection
-        // 	? 'even'
-        // 	: playerSelection.toLowerCase() === 'rock' &&
-        // 	  computerSelection === 'sissors'
-        // 	? 'win'
-        // 	: playerSelection.toLowerCase() === 'paper' &&
-        // 	  computerSelection === 'rock'
-        // 	? 'win'
-        // 	: playerSelection.toLowerCase() === 'sissors' &&
-        // 	  computerSelection === 'paper'
-        // 	? 'win'
-        // 	: 'lose';
-        if (playerSelection.toLowerCase() === computerSelection) {
-          return "Its a Tie!";
-        } else if (
-          playerSelection.toLowerCase() === "rock" &&
-          computerSelection === "sissors"
-        ) {
-          return "You Win! Rock Beats Sissors!";
-        } else if (
-          playerSelection.toLowerCase() === "paper" &&
-          computerSelection === "rock"
-        ) {
-          return "You Win! Paper beats Rock!";
-        } else if (
-          playerSelection.toLowerCase() === "sissors" &&
-          computerSelection === "paper"
-        ) {
-          return "You Win! Sissor Beats Paper!";
-        } else {
-          return "You Lose!";
-        }
-      }
+			// Rock
 
-      function game() {
-        win = 0;
-        loss = 0;
-        tie = 0;
-        for (let i = 0; i < 5; i++) {
-          let rounds = playRound(playerSelection, computerSelection);
-          // console.log(rounds.includes('Win'));
-          if (rounds.includes("Win") === true) {
-            win++;
-          } else if (rounds.includes("Lose")) {
-            loss++;
-          } else {
-            tie++;
-          }
-        }
-        return win > loss
-          ? "You Win"
-          : win === loss
-          ? "Is is a tie!"
-          : "You Lose";
-      }
+			rock.addEventListener('click', function (e) {
+				playerSelection = e.target.id;
+				const container = document.querySelector('#container');
+				const div = document.createElement('div');
+				div.setAttribute('id', 'results');
 
-      const playerSelection = prompt();
-      const computerSelection = "";
+				const gameResults = playRound(playerSelection, computerSelection);
+				document.getElementById('container').textContent = gameResults;
 
-      console.log(playRound(playerSelection, computerSelection));
-    </script>
-  </body>
+				if (gameResults.includes('You Win!!') === true) {
+					const winner = document.createElement('div');
+					winner.setAttribute('id', 'win');
+					win++;
+					document.getElementById('wins').textContent = 'Wins: ' + win;
+
+					wins.appendChild(winner);
+				}
+				if (gameResults.includes('You Lose!!') === true) {
+					const loser = document.createElement('div');
+
+					loser.setAttribute('id', 'lose');
+					lose++;
+					document.getElementById('losses').textContent = 'Losses: ' + lose;
+
+					losses.appendChild(loser);
+				}
+				if (gameResults.includes('Its a Tie!!') === true) {
+					const ties = document.createElement('div');
+					ties.setAttribute('id', 'tie');
+					tie++;
+					document.getElementById('tiedGame').textContent = 'Ties: ' + tie;
+					tiedGame.appendChild(ties);
+				}
+				if (win >= 5 && win > lose) {
+					div.textContent = 'You Won The Game!';
+				}
+				if (lose >= 5 && lose > win) {
+					div.textContent = 'You Lost The Game!';
+				}
+
+				container.appendChild(div);
+			});
+
+			// Paper
+
+			paper.addEventListener('click', function (e) {
+				playerSelection = e.target.id;
+				const container = document.querySelector('#container');
+				const div = document.createElement('div');
+				div.setAttribute('id', 'results');
+
+				const gameResults = playRound(playerSelection, computerSelection);
+				document.getElementById('container').textContent = gameResults;
+
+				if (gameResults.includes('You Win!!') === true) {
+					const winner = document.createElement('div');
+					winner.setAttribute('id', 'win');
+					win++;
+					document.getElementById('wins').textContent = 'Wins: ' + win;
+
+					wins.appendChild(winner);
+				}
+				if (gameResults.includes('You Lose!!') === true) {
+					const loser = document.createElement('div');
+
+					loser.setAttribute('id', 'lose');
+					lose++;
+					document.getElementById('losses').textContent = 'Losses: ' + lose;
+
+					losses.appendChild(loser);
+				}
+				if (gameResults.includes('Its a Tie!!') === true) {
+					const ties = document.createElement('div');
+					ties.setAttribute('id', 'tie');
+					tie++;
+					document.getElementById('tiedGame').textContent = 'Ties: ' + tie;
+					tiedGame.appendChild(ties);
+				}
+				if (win >= 5 && win > lose) {
+					div.textContent = 'You Won The Game!';
+				}
+				if (lose >= 5 && lose > win) {
+					div.textContent = 'You Lost The Game!';
+				}
+
+				container.appendChild(div);
+			});
+
+			// Sissors
+
+			sissors.addEventListener('click', function (e) {
+				playerSelection = e.target.id;
+				const container = document.querySelector('#container');
+				const div = document.createElement('div');
+				div.setAttribute('id', 'results');
+
+				const gameResults = playRound(playerSelection, computerSelection);
+				document.getElementById('container').textContent = gameResults;
+
+				if (gameResults.includes('You Win!!') === true) {
+					const winner = document.createElement('div');
+					winner.setAttribute('id', 'win');
+					win++;
+					document.getElementById('wins').textContent = 'Wins: ' + win;
+
+					wins.appendChild(winner);
+				}
+				if (gameResults.includes('You Lose!!') === true) {
+					const loser = document.createElement('div');
+
+					loser.setAttribute('id', 'lose');
+					lose++;
+					document.getElementById('losses').textContent = 'Losses: ' + lose;
+
+					losses.appendChild(loser);
+				}
+				if (gameResults.includes('Its a Tie!!') === true) {
+					const ties = document.createElement('div');
+					ties.setAttribute('id', 'tie');
+					tie++;
+					document.getElementById('tiedGame').textContent = 'Ties: ' + tie;
+					tiedGame.appendChild(ties);
+				}
+				if (win >= 5 && win > lose) {
+					div.textContent = 'You Won The Game!';
+				}
+				if (lose >= 5 && lose > win) {
+					div.textContent = 'You Lost The Game!';
+				}
+
+				container.appendChild(div);
+			});
+
+			function computerPlay() {
+				let gamePieces = ['rock', 'paper', 'sissors'];
+				let randomOutcome = Math.floor(Math.random() * 3);
+				return gamePieces[randomOutcome];
+			}
+
+			function playRound(playerSelection, computerSelection) {
+				computerSelection = computerPlay();
+
+				return playerSelection.toLowerCase() === computerSelection
+					? 'Its a Tie!!'
+					: playerSelection.toLowerCase() === 'rock' &&
+					  computerSelection === 'sissors'
+					? 'You Win!!'
+					: playerSelection.toLowerCase() === 'paper' &&
+					  computerSelection === 'rock'
+					? 'You Win!!'
+					: playerSelection.toLowerCase() === 'sissors' &&
+					  computerSelection === 'paper'
+					? 'You Win!!'
+					: 'You Lose!!';
+				// if (playerSelection.toLowerCase() === computerSelection) {
+				//   return "Its a Tie!";
+				// } else if (
+				//   playerSelection.toLowerCase() === "rock" &&
+				//   computerSelection === "sissors"
+				// ) {
+				//   return "You Win! Rock Beats Sissors!";
+				// } else if (
+				//   playerSelection.toLowerCase() === "paper" &&
+				//   computerSelection === "rock"
+				// ) {
+				//   return "You Win! Paper beats Rock!";
+				// } else if (
+				//   playerSelection.toLowerCase() === "sissors" &&
+				//   computerSelection === "paper"
+				// ) {
+				//   return "You Win! Sissor Beats Paper!";
+				// } else {
+				//   return "You Lose!";
+				// }
+			}
+
+			// function game() {   game did let you go 5 times, dont need
+			//   win = 0;
+			//   loss = 0;
+			//   tie = 0;
+			//   for (let i = 0; i < 5; i++) {
+			//     let rounds = playRound(playerSelection, computerSelection);
+			//     // console.log(rounds.includes('Win'));
+			//     if (rounds.includes("Win") === true) {
+			//       win++;
+			//     } else if (rounds.includes("Lose")) {
+			//       loss++;
+			//     } else {
+			//       tie++;
+			//     }
+			//   }
+			//   return win > loss
+			//     ? "You Win"
+			//     : win === loss
+			//     ? "Is is a tie!"
+			//     : "You Lose";
+			// }
+
+			let playerSelection = '';
+			let computerSelection = '';
+			// console.log(playRound(playerSelection, computerSelection));
+		</script>
+	</body>
 </html>
