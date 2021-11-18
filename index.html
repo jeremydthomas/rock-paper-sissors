@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css">
 		<title>Document</title>
 	</head>
 	<body>
@@ -31,9 +32,11 @@
 				const container = document.querySelector('#container');
 				const div = document.createElement('div');
 				div.setAttribute('id', 'results');
+				container.appendChild(div);
 
 				const gameResults = playRound(playerSelection, computerSelection);
-				document.getElementById('container').textContent = gameResults;
+
+				document.getElementById('results').textContent = gameResults;
 
 				if (gameResults.includes('You Win!!') === true) {
 					const winner = document.createElement('div');
@@ -66,7 +69,6 @@
 					div.textContent = 'You Lost The Game!';
 				}
 
-				container.appendChild(div);
 			});
 
 			// Paper
