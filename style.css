@@ -1,3 +1,63 @@
+#results {
+	position: absolute;
+	text-decoration: none;
+	left: 37%;
+}
+
 #container {
-    text-align: center;
+	text-align: center;
+	font-size: 50px;
+	width: 700px;
+	height: 300px;
+	grid: flex;
+	margin: 0 auto;
+	position: relative;
+}
+
+h1 {
+	text-align: center;
+	font-size: 100px;
+	font-family: 'Comic Sans MS';
+}
+
+#wins {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+}
+
+#losses {
+	position: absolute;
+	top: 0%;
+	right: 0%;
+}
+
+#rock {
+	position: absolute;
+	bottom: 0%;
+	right: 10%;
+	height: 50px;
+	width: 70px;
+	/* background-image: url('http://media.gq.com/photos/5965abe1ae316b79758765c4/16:9/pass/the-rock-skin.jpg');
+    background-size: 70px 50px; */
+}
+
+#paper {
+	position: absolute;
+	bottom: 0%;
+	right: 45%;
+	height: 50px;
+	width: 70px;
+	/* background-image: url('http://media.gq.com/photos/5965abe1ae316b79758765c4/16:9/pass/the-rock-skin.jpg');
+    background-size: 70px 50px; */
+}
+
+#sissors {
+	position: absolute;
+	bottom: 0%;
+	right: 80%;
+	height: 50px;
+	width: 70px;
+	/* background-image: url('http://media.gq.com/photos/5965abe1ae316b79758765c4/16:9/pass/the-rock-skin.jpg');
+    background-size: 70px 50px; */
 }

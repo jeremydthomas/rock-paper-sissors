@@ -4,17 +4,21 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
 		<title>Document</title>
 	</head>
 	<body>
-		<button id="rock">Rock</button>
-		<button id="paper">Paper</button>
-		<button id="sissors">Sissors</button>
-		<div id="container">Results</div>
-		<div id="wins">Wins</div>
-		<div id="losses">Losses</div>
-		<div id="tiedGame">Tie</div>
+		<h1>Rock, Paper, Scissors</h1>
+
+		<div id="container" style="text-decoration: underline">
+			Results
+			<div id="wins"><u>Wins</u></div>
+			<div id="losses"><u>Losses</u></div>
+			<!-- <div id="tiedGame">Tie</div> -->
+			<button id="rock">Rock</button>
+			<button id="paper">Paper</button>
+			<button id="sissors">Scissors</button>
+		</div>
 
 		<script>
 			const rock = document.querySelector('#rock');
@@ -42,18 +46,16 @@
 					const winner = document.createElement('div');
 					winner.setAttribute('id', 'win');
 					win++;
-					document.getElementById('wins').textContent = 'Wins: ' + win;
 
 					wins.appendChild(winner);
+					document.getElementById('win').textContent = win;
 				}
 				if (gameResults.includes('You Lose!!') === true) {
 					const loser = document.createElement('div');
-
 					loser.setAttribute('id', 'lose');
 					lose++;
-					document.getElementById('losses').textContent = 'Losses: ' + lose;
-
 					losses.appendChild(loser);
+					document.getElementById('lose').textContent = lose;
 				}
 				if (gameResults.includes('Its a Tie!!') === true) {
 					const ties = document.createElement('div');
@@ -63,12 +65,11 @@
 					tiedGame.appendChild(ties);
 				}
 				if (win >= 5 && win > lose) {
-					div.textContent = 'You Won The Game!';
+					document.getElementById('results').textContent = 'WINNER!';
 				}
 				if (lose >= 5 && lose > win) {
-					div.textContent = 'You Lost The Game!';
+					document.getElementById('results').textContent = 'LOSER!';
 				}
-
 			});
 
 			// Paper
